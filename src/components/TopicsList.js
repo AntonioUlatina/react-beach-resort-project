@@ -4,7 +4,8 @@ const TopicsList = ({ topics }) => {
   if (topics.length === 0) {
     return (
       <div className="empty-search">
-        <h3>unfortunately no topics matched your search parameters</h3>
+        <h3>No hay temas para este grado! :(
+        </h3>
       </div>
     );
   }
@@ -20,3 +21,4 @@ const TopicsList = ({ topics }) => {
 };
 
 export default TopicsList;
+

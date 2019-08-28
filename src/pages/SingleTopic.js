@@ -23,9 +23,9 @@ export default class SingleTopic extends Component {
     if (!tempTopic) {
       return (
         <div className="error">
-          <h3> no such tempTopic could be found...</h3>
+          <h3> El tema no existe </h3>
           <Link to="/tempTopics" className="btn-primary">
-            back to tempTopics
+            De vuelta a Pagina principal
           </Link>
         </div>
       );
@@ -46,7 +46,7 @@ export default class SingleTopic extends Component {
             <article className="info">
               <h3>Informacion</h3>
               <h6>Tema : {topic}</h6>
-              <h6>Subtema : {subtopic} SQFT</h6>
+              <h6>Subtema : {subtopic}</h6>
             </article>
             <article className="desc">
               <h3>Detalles</h3>

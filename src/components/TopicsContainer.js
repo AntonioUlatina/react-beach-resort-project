@@ -4,15 +4,12 @@ import TopicsFilter from "./TopicsFilter";
 import TopicsList from "./TopicsList";
 
 function TopicContainer({ context }) {
-  // const { sortedTopics, topics } = context;
-  // console.log(
-  //   "sortedTopics " + sortedTopics + " topics " + topics + " context " + context
-  // );
-  console.log("context: " + context);
+  console.log("Gcontext: " + context);
+  const { topics, sortedTopics } = context;
   return (
     <>
       {/* <TopicsFilter topics={topics} /> */}
-      {/* <TopicsList topics={sortedTopics} /> */}
+      <TopicsList topics={topics} />
     </>
   );
 }

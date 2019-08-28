@@ -10,18 +10,7 @@ const getUnique = (items, value) => {
 const TopicsFilter = ({ topics }) => {
   // react hooks
   const context = useContext(TopicContext);
-  const {
-    handleChange,
-    grade,
-    category,
-    topic,
-    minTopic,
-    maxTopic,
-    minSize,
-    maxSize,
-    reviewCount,
-    rating
-  } = context;
+  const { handleChange, grade, topic } = context;
 
   // get unique grades
   let grades = getUnique(topics, "grade");
@@ -58,28 +47,13 @@ const TopicsFilter = ({ topics }) => {
           </select>
         </div>
         {/* end of select type */}
-        {/* guests  */}
-        <div className="form-group">
-          <label htmlFor="category">Guests</label>
-          <select
-            name="category"
-            id="category"
-            onChange={handleChange}
-            className="form-control"
-            value={category}
-          >
-            {people}
-          </select>
-        </div>
-        {/* end of guests */}
+
         {/* topic topic */}
         <div className="form-group">
           <label htmlFor="topic">topic topic ${topic}</label>
           <input
-            type="range"
+            type="text"
             name="topic"
-            min={minTopic}
-            max={maxTopic}
             id="topic"
             value={topic}
             onChange={handleChange}
@@ -92,45 +66,13 @@ const TopicsFilter = ({ topics }) => {
           <label htmlFor="topic">topic subtopic </label>
           <div className="subtopic-inputs">
             <input
-              type="number"
-              name="minSize"
-              value={minSize}
-              onChange={handleChange}
-              className="subtopic-input"
-            />
-            <input
-              type="number"
-              name="maxSize"
-              value={maxSize}
+              type="text"
               onChange={handleChange}
               className="subtopic-input"
             />
           </div>
         </div>
         {/* end of select type */}
-        {/* extras */}
-        <div className="form-group">
-          <div className="single-extra">
-            <input
-              type="checkbox"
-              name="reviewCount"
-              id="reviewCount"
-              checked={reviewCount}
-              onChange={handleChange}
-            />
-            <label htmlFor="reviewCount">reviewCount</label>
-          </div>
-          <div className="single-extra">
-            <input
-              type="checkbox"
-              name="rating"
-              checked={rating}
-              onChange={handleChange}
-            />
-            <label htmlFor="reviewCount">rating</label>
-          </div>
-        </div>
-        {/* end of extras type */}
       </form>
     </section>
   );

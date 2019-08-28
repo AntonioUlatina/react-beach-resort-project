@@ -1,15 +1,22 @@
 import React from "react";
 import { Link } from "react-router-dom";
-// import "./App.css";
 import Container from "react-bootstrap/Container";
 import Accord from "react-bootstrap/Accordion";
 import Card from "react-bootstrap/Card";
 import Image from "react-bootstrap/Image";
 import PropTypes from "prop-types";
-import { memo } from "react";
+import { useContext } from "react";
+import { TopicContext } from "../altcontext";
 
-const Accordion = memo(({ topic }) => {
-    const { slug } = topic;
+
+// const Accordion = memo(({ topic }) => {
+//     const { slug } = topic;
+
+function Accordion() {
+
+    // react hooks
+//     const context = useContext(TopicContext);
+//   const { slug } = context;
 
         return (
 
@@ -38,7 +45,7 @@ const Accordion = memo(({ topic }) => {
                                             style={{ background: "black", color: "white" }}
                                             eventKey="0"
                                         >
-                            <Link to="/tempTopics" style={{color:"white"}}>
+                            <Link style={{color:"white"}}>
 
                                             Quarto
                                             </Link>
@@ -51,13 +58,13 @@ const Accordion = memo(({ topic }) => {
                                                         as={Card.Header}
                                                         eventKey="0"
                                                     >
-                                                        <Link to="/" style={{color: "black"}}>
+                                                        <Link style={{color: "black"}}>
                                                         Historia
                                                         </Link>
                           </Accord.Toggle>
                                                     <Accord.Collapse className="Subtopic" eventKey="0">
                                                         <Card.Body>
-                                            <Link to={`/tempTopics/${slug}`} style={{ color: "black" }}>
+                                            <Link to='/tempTopics/1' style={{ color: "black" }}>
                                                                 Definición y su importancia en la vida cotidiana
                                                                 de los Estudios Sociales.
                                                             </Link>
@@ -70,14 +77,14 @@ const Accordion = memo(({ topic }) => {
                                                         as={Card.Header}
                                                         eventKey="1"
                                                     >
-                                                        <Link to="/" style={{color: "black"}}>
+                                                        <Link style={{color: "black"}}>
 
                                                         Geografia
                                                         </Link>
                           </Accord.Toggle>
                                                     <Accord.Collapse className="Subtopic" eventKey="1">
                                                         <Card.Body>
-                                            <Link to={`/tempTopics/${slug}`} style={{ color: "black" }}>
+                                            <Link to='/tempTopics/2' style={{ color: "black" }}>
                                                                 Ubicación hemisférica y continental del país.
                                                             </Link>
                               
@@ -90,14 +97,14 @@ const Accordion = memo(({ topic }) => {
                                                         as={Card.Header}
                                                         eventKey="2"
                                                     >
-                                                        <Link to="/" style={{color: "black"}}>
+                                                        <Link style={{color: "black"}}>
 
                                                         Sociologia
                                                         </Link>
                           </Accord.Toggle>
                                                     <Accord.Collapse className="Subtopic" eventKey="2">
                                                         <Card.Body>
-                                            <Link to={`/tempTopics/${slug}`} style={{ color: "black" }}>
+                                            <Link to='/tempTopics/3' style={{ color: "black" }}>
                                                                 Regiones socioeconómicas de Costa Rica:
                                                                 ubicación y características.
 
@@ -112,14 +119,14 @@ const Accordion = memo(({ topic }) => {
                                                         as={Card.Header}
                                                         eventKey="3"
                                                     >
-                                                        <Link to="/" style={{color: "black"}}>
+                                                        <Link style={{color: "black"}}>
                                                         Formacion ciudadana
 
                                                         </Link>
                           </Accord.Toggle>
                                                     <Accord.Collapse className="Subtopic" eventKey="3">
                                                         <Card.Body>
-                                            <Link to={`/tempTopics/${slug}`} style={{ color: "black" }}>
+                                            <Link to='/tempTopics/4' style={{ color: "black" }}>
 
                                                                 Definición y su importancia en la vida cotidiana
                                                                 de la Educación Cívica.
@@ -138,7 +145,7 @@ const Accordion = memo(({ topic }) => {
                                             style={{ background: "black", color: "white" }}
                                             eventKey="1"
                                         >
-                                            <Link to="/" style={{ color: "white" }}>
+                                            <Link style={{ color: "white" }}>
 
                                             Quinto
                                             </Link>
@@ -151,7 +158,7 @@ const Accordion = memo(({ topic }) => {
                                                         as={Card.Header}
                                                         eventKey="0"
                                                     >
-                                                        <Link to="/" style={{color: "black"}}>
+                                                        <Link  style={{color: "black"}}>
 
                                                         Historia
                                                         </Link>
@@ -159,7 +166,7 @@ const Accordion = memo(({ topic }) => {
                                                     <Accord.Collapse className="Subtopic" eventKey="0">
                                                         <Card.Body>
                                                             
-                                            <Link to={`/tempTopics/${slug}`} style={{ color: "black" }}>
+                                            <Link to='/tempTopics/5' style={{ color: "black" }}>
 
                                                                 Etnias de Costa Rica: nombres y ubicación
                                                                 geográfica.
@@ -169,7 +176,7 @@ const Accordion = memo(({ topic }) => {
                                                     </Accord.Collapse>
                                                     <Accord.Collapse className="Subtopic" eventKey="0">
                                                         <Card.Body>
-                                            <Link to={`/tempTopics/${slug}`} style={{ color: "black" }}>
+                                            <Link to='/tempTopics/6' style={{ color: "black" }}>
 
                                                                 Arte de los pueblos originarios de Costa Rica.
                                                             </Link>
@@ -183,14 +190,14 @@ const Accordion = memo(({ topic }) => {
                                                         as={Card.Header}
                                                         eventKey="1"
                                                     >
-                                                        <Link to="/" style={{color: "black"}}>
+                                                        <Link  style={{color: "black"}}>
 
                                                         Sociologia
                                                         </Link>
                           </Accord.Toggle>
                                                     <Accord.Collapse className="Subtopic" eventKey="1">
                                                         <Card.Body>
-                                            <Link to={`/tempTopics/${slug}`} style={{ color: "black" }}>
+                                            <Link to='/tempTopics/7' style={{ color: "black" }}>
 
                                                                 Impactos culturales, demográficos y sociales de
                                                                 la conquista española.
@@ -205,14 +212,14 @@ const Accordion = memo(({ topic }) => {
                                                         as={Card.Header}
                                                         eventKey="2"
                                                     >
-                                                        <Link to="/" style={{color: "black"}}>
+                                                        <Link  style={{color: "black"}}>
 
                                                         Formacion ciudadana
                                                         </Link>
                           </Accord.Toggle>
                                                     <Accord.Collapse className="Subtopic" eventKey="2">
                                                         <Card.Body>
-                                            <Link to={`/tempTopics/${slug}`} style={{ color: "black" }}>
+                                            <Link to='/tempTopics/8' style={{ color: "black" }}>
                                                             
                                                                 Primera Constitución Política de Costa Rica: El
                                                                 Pacto de Concordia.
@@ -231,7 +238,7 @@ const Accordion = memo(({ topic }) => {
                                             style={{ background: "black", color: "white" }}
                                             eventKey="2"
                                         >
-                                            <Link to="/" style={{ color: "white" }}>
+                                            <Link  style={{ color: "white" }}>
 
                                             Sexto
                                             </Link>
@@ -244,14 +251,14 @@ const Accordion = memo(({ topic }) => {
                                                         as={Card.Header}
                                                         eventKey="0"
                                                     >
-                                                        <Link to="/" style={{color: "black"}}>
+                                                        <Link  style={{color: "black"}}>
 
                                                         Historia
                                                         </Link>
                           </Accord.Toggle>
                                                     <Accord.Collapse className="Subtopic" eventKey="0">
                                                         <Card.Body>
-                                            <Link to={`/tempTopics/${slug}`} style={{ color: "black" }}>
+                                            <Link to='/tempTopics/9' style={{ color: "black" }}>
 
                                                                 La Campaña Nacional en la época de la
                                                                 independencia.
@@ -266,14 +273,14 @@ const Accordion = memo(({ topic }) => {
                                                         as={Card.Header}
                                                         eventKey="1"
                                                     >
-                                                        <Link to="/" style={{color: "black"}}>
+                                                        <Link  style={{color: "black"}}>
 
                                                         Sociologia
                                                         </Link>
                           </Accord.Toggle>
                                                     <Accord.Collapse className="Subtopic" eventKey="1">
                                                         <Card.Body>
-                                            <Link to={`/tempTopics/${slug}`} style={{ color: "black" }}>
+                                            <Link to='/tempTopics/10' style={{ color: "black" }}>
                                                             
                                                                 Medidas básicas para el manejo de las redes
                                                                 sociales
@@ -288,14 +295,14 @@ const Accordion = memo(({ topic }) => {
                                                         as={Card.Header}
                                                         eventKey="2"
                                                     >
-                                                        <Link to="/" style={{color: "black"}}>
+                                                        <Link  style={{color: "black"}}>
 
                                                         Formacion ciudadana
                                                         </Link>
                           </Accord.Toggle>
                                                     <Accord.Collapse className="Subtopic" eventKey="2">
                                                         <Card.Body>
-                                            <Link to={`/tempTopics/${slug}`} style={{ color: "black" }}>
+                                            <Link to='/tempTopics/11' style={{ color: "black" }}>
 
                                                                 Seguridad Vial: Peatones y pasajeros: conductas
                                                                 responsables.
@@ -312,8 +319,9 @@ const Accordion = memo(({ topic }) => {
                         </Row> */}
                     {/* </div> */}
                 </Container>
-        )
-});
+        );
+}
+// }
 
 Accordion.propTypes = {
         game: PropTypes.shape({
