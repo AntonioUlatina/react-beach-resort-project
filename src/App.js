@@ -14,28 +14,38 @@ import { Switch, Route } from "react-router-dom";
 import { Row, Col } from "react-bootstrap";
 import Topics from "./pages/Topics";
 import SingleTopic from "./pages/SingleTopic";
+import { TopicContext } from "./altcontext";
 
-function App() {
-  return (
-    <>
-      <Navbar />
-      <Row>
-        <Col sm={3}>
-          <Accordion />
-        </Col>
-        <Col sm={9}>
-          <Switch>
-            <Route exact path="/" component={Home} />
-            <Route exact path="/games/" component={Games} />
-            <Route exact path="/game/:slug" component={SingleGame} />
-            <Route exact path="/tempTopics" component={Topics} />
-            <Route exact path="/tempTopics/:slug" component={SingleTopic} />
-            <Route component={Error} />
-          </Switch>
-        </Col>
-      </Row>
-    </>
-  );
+class App extends React.Component {
+  static contextType = TopicContext;
+
+  render() {
+    let { sortedTopics: topics } = this.context;
+
+    return (
+      <>
+        <Navbar />
+        <Row>
+          <Col sm={3}>
+            {topics.map(item => {
+              return <Accordion key={item.id} topic={item} />;
+            })}
+            {/* <Accordion topic={topics} /> */}
+          </Col>
+          <Col sm={9}>
+            <Switch>
+              <Route exact path="/" component={Home} />
+              <Route exact path="/games/" component={Games} />
+              <Route exact path="/game/:slug" component={SingleGame} />
+              <Route exact path="/tempTopics" component={Topics} />
+              <Route exact path="/tempTopics/:slug" component={SingleTopic} />
+              <Route component={Error} />
+            </Switch>
+          </Col>
+        </Row>
+      </>
+    );
+  }
 }
 
 export default App;

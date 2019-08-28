@@ -8,17 +8,9 @@ import Image from "react-bootstrap/Image";
 import PropTypes from "prop-types";
 import { memo } from "react";
 
-// class Accordion extends React.Component {
-    // constructor(props) {
-    //     super(props);
-    //     this.state = {
-    //         slug: this.contextType.slug
-    //     };
-    // }
-const Accordion = memo(({ accordion }) => {
-    const { slug } = accordion;
+const Accordion = memo(({ topic }) => {
+    const { slug } = topic;
 
-    // render() {
         return (
 
                 <Container style={{ margin: 0, background: "lightblue" }}>
@@ -320,14 +312,13 @@ const Accordion = memo(({ accordion }) => {
                         </Row> */}
                     {/* </div> */}
                 </Container>
-        );
-    });
-// }
+        )
+});
 
 Accordion.propTypes = {
-    accordion: PropTypes.shape({
-        slug: PropTypes.string.isRequired
-    })
-};
+        game: PropTypes.shape({
+            slug: PropTypes.string.isRequired
+        })
+    };
 
 export default Accordion;

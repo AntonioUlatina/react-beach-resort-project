@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import defaultImg from "../images/game-1.jpeg";
+import defaultImg from "../images/game-placeholder.jpg";
 import PropTypes from "prop-types";
 import { memo } from "react";
 
