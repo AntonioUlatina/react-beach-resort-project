@@ -13,7 +13,9 @@ const Game = memo(({ game }) => {
           <img src={images[0] || defaultImg} alt="single game" />
         </Link>
       </div>
-      <p className="game-info">{name}</p>
+      <p className="game-info">
+        {name} {slug}
+      </p>
     </article>
   );
 });

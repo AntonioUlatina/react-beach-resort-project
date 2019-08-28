@@ -28,14 +28,7 @@ export default class SingleGame extends Component {
         </div>
       );
     }
-    const {
-      name,
-      description,
-      category,
-      subtopic,
-      topic,
-      images
-    } = game;
+    const { name, description, category, topic, images } = game;
     const [main, ...defaultImages] = images;
     console.log(defaultImages);
 
@@ -56,11 +49,7 @@ export default class SingleGame extends Component {
             <article className="info">
               <h3>Informacion</h3>
               <h6>Tema : {topic}</h6>
-              <h6>Subtema : {subtopic}</h6>
-              <h6>
-                Categoria :
-                {category}
-              </h6>
+              <h6>Categoria :{category}</h6>
             </article>
           </div>
         </section>
