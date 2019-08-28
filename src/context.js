@@ -1,46 +1,38 @@
 import React, { Component } from "react";
 import items from "./data";
-import Client from "./Contentful";
 
-const RoomContext = React.createContext();
+const GameContext = React.createContext();
 
-export default class RoomProvider extends Component {
+export default class GameProvider extends Component {
   state = {
-    rooms: [],
-    sortedRooms: [],
-    featuredRooms: [],
+    games: [],
+    sortedGames: [],
+    featuredGames: [],
     loading: true,
     //
-    type: "all",
-    capacity: 1,
-    price: 0,
-    minPrice: 0,
-    maxPrice: 0,
-    minSize: 0,
-    maxSize: 0,
-    breakfast: false,
-    pets: false
+    grade: "Quarto",
+    topic: "Historia"
   };
 
   // getData = async () => {
   //   try {
   //     let response = await Client.getEntries({
-  //       content_type: "beachResortRoom"
+  //       content_grade: "beachResortGame"
   //     });
-  //     let rooms = this.formatData(response.items);
+  //     let games = this.formatData(response.items);
 
-  //     let featuredRooms = rooms.filter(room => room.featured === true);
+  //     let featuredGames = games.filter(game => game.featured === true);
   //     //
-  //     let maxPrice = Math.max(...rooms.map(item => item.price));
-  //     let maxSize = Math.max(...rooms.map(item => item.size));
+  //     let maxTopic = Math.max(...games.map(item => item.topic));
+  //     let maxSize = Math.max(...games.map(item => item.subtopic));
   //     this.setState({
-  //       rooms,
-  //       featuredRooms,
-  //       sortedRooms: rooms,
+  //       games,
+  //       featuredGames,
+  //       sortedGames: games,
   //       loading: false,
   //       //
-  //       price: maxPrice,
-  //       maxPrice,
+  //       topic: maxTopic,
+  //       maxTopic,
   //       maxSize
   //     });
   //   } catch (error) {
@@ -48,22 +40,35 @@ export default class RoomProvider extends Component {
   //   }
   // };
 
-  componentDidMount() {
+  // componentDidUpdate() {
+  //   let games = this.formatData(items);
+  //   let featuredGames = games.filter(game => game.featured === true);
+  //   //
+  //   // let topic = Math.max(...games.map(item => item.topic));
+  //   // let maxSize = Math.max(...games.map(item => item.subtopic));
+  //   this.setState({
+  //     games,
+  //     featuredGames,
+  //     sortedGames: games,
+  //     loading: false
+  //   });
+  // }
+  componentWillMount() {
     // this.getData();
-    let rooms = this.formatData(items);
-    let featuredRooms = rooms.filter(room => room.featured === true);
+    let games = this.formatData(items);
+    let featuredGames = games.filter(game => game.featured === true);
     //
-    let maxPrice = Math.max(...rooms.map(item => item.price));
-    let maxSize = Math.max(...rooms.map(item => item.size));
+    // let topic = Math.max(...games.map(item => item.topic));
+    // let maxSize = Math.max(...games.map(item => item.subtopic));
     this.setState({
-      rooms,
-      featuredRooms,
-      sortedRooms: rooms,
-      loading: false,
+      games,
+      featuredGames,
+      sortedGames: games,
+      loading: false
       //
-      price: maxPrice,
-      maxPrice,
-      maxSize
+      // topic: maxTopic,
+      // maxTopic,
+      // maxSize
     });
   }
 
@@ -72,15 +77,15 @@ export default class RoomProvider extends Component {
       let id = item.sys.id;
       let images = item.fields.images.map(image => image.fields.file.url);
 
-      let room = { ...item.fields, images, id };
-      return room;
+      let game = { ...item.fields, images, id };
+      return game;
     });
     return tempItems;
   }
-  getRoom = slug => {
-    let tempRooms = [...this.state.rooms];
-    const room = tempRooms.find(room => room.slug === slug);
-    return room;
+  getGame = slug => {
+    let tempGames = [...this.state.games];
+    const game = tempGames.find(game => game.slug === slug);
+    return game;
   };
   handleChange = event => {
     const target = event.target;
@@ -92,76 +97,66 @@ export default class RoomProvider extends Component {
       {
         [name]: value
       },
-      this.filterRooms
+      this.filterGames
     );
   };
-  filterRooms = () => {
-    let {
-      rooms,
-      type,
-      capacity,
-      price,
-      minSize,
-      maxSize,
-      breakfast,
-      pets
-    } = this.state;
+  filterGames = () => {
+    let { games, grade, topic } = this.state;
 
-    let tempRooms = [...rooms];
+    let tempGames = [...games];
     // transform values
-    // get capacity
-    capacity = parseInt(capacity);
-    price = parseInt(price);
-    // filter by type
-    if (type !== "all") {
-      tempRooms = tempRooms.filter(room => room.type === type);
+    // get category
+    // topic = parseInt(topic);
+    // filter by grade
+    if (grade !== "all") {
+      tempGames = tempGames.filter(game => game.grade === grade);
     }
-    // filter by capacity
-    if (capacity !== 1) {
-      tempRooms = tempRooms.filter(room => room.capacity >= capacity);
+    // filter by topic
+    if (topic !== "all") {
+      tempGames = tempGames.filter(game => game.topic === topic);
     }
-    // filter by price
-    tempRooms = tempRooms.filter(room => room.price <= price);
-    //filter by size
-    tempRooms = tempRooms.filter(
-      room => room.size >= minSize && room.size <= maxSize
-    );
-    //filter by breakfast
-    if (breakfast) {
-      tempRooms = tempRooms.filter(room => room.breakfast === true);
-    }
-    //filter by pets
-    if (pets) {
-      tempRooms = tempRooms.filter(room => room.pets === true);
-    }
+    // // filter by topic
+    // tempGames = tempGames.filter(game => game.topic <= topic);
+    // //filter by subtopic
+    // tempGames = tempGames.filter(
+    //   game => game.subtopic >= minSize && game.subtopic <= maxSize
+    // );
+    //filter by reviewCount
+    // if (reviewCount) {
+    //   tempGames = tempGames.filter(game => game.reviewCount === true);
+    // }
+    // //filter by rating
+    // if (rating) {
+    //   tempGames = tempGames.filter(game => game.rating === true);
+    // }
     this.setState({
-      sortedRooms: tempRooms
+      sortedGames: tempGames
     });
   };
   render() {
     return (
-      <RoomContext.Provider
+      <GameContext.Provider
         value={{
           ...this.state,
-          getRoom: this.getRoom,
+          getGame: this.getGame,
           handleChange: this.handleChange
         }}
       >
         {this.props.children}
-      </RoomContext.Provider>
+      </GameContext.Provider>
     );
   }
 }
-const RoomConsumer = RoomContext.Consumer;
+const GameConsumer = GameContext.Consumer;
 
-export { RoomProvider, RoomConsumer, RoomContext };
+export { GameProvider, GameConsumer, GameContext };
 
-export function withRoomConsumer(Component) {
+export function withGameConsumer(Component) {
   return function ConsumerWrapper(props) {
     return (
-      <RoomConsumer>
+      <GameConsumer>
         {value => <Component {...props} context={value} />}
-      </RoomConsumer>
+      </GameConsumer>
     );
   };
 }

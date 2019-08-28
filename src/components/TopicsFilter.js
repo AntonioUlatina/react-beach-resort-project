@@ -1,40 +1,40 @@
 import React from "react";
 import { useContext } from "react";
-import { RoomContext } from "../context";
+import { TopicContext } from "../altcontext";
 import Title from "./Title";
 // get all unique values
 const getUnique = (items, value) => {
   return [...new Set(items.map(item => item[value]))];
 };
 
-const RoomsFilter = ({ rooms }) => {
+const TopicsFilter = ({ topics }) => {
   // react hooks
-  const context = useContext(RoomContext);
+  const context = useContext(TopicContext);
   const {
     handleChange,
-    type,
-    capacity,
-    price,
-    minPrice,
-    maxPrice,
+    grade,
+    category,
+    topic,
+    minTopic,
+    maxTopic,
     minSize,
     maxSize,
-    breakfast,
-    pets
+    reviewCount,
+    rating
   } = context;
 
-  // get unique types
-  let types = getUnique(rooms, "type");
+  // get unique grades
+  let grades = getUnique(topics, "grade");
   // add all
-  types = ["all", ...types];
+  grades = ["all", ...grades];
   // map to jsx
-  types = types.map((item, index) => (
+  grades = grades.map((item, index) => (
     <option key={index} value={item}>
       {item}
     </option>
   ));
-  // get unique capacity
-  let people = getUnique(rooms, "capacity");
+  // get unique category
+  let people = getUnique(topics, "category");
   people = people.map((item, index) => (
     <option key={index} value={item}>
       {item}
@@ -42,68 +42,68 @@ const RoomsFilter = ({ rooms }) => {
   ));
   return (
     <section className="filter-container">
-      <Title title="search rooms" />
+      <Title title="search topics" />
       <form className="filter-form">
-        {/* select type */}
+        {/* select grade */}
         <div className="form-group">
-          <label htmlFor="type">room type</label>
+          <label htmlFor="grade">topic grade</label>
           <select
-            name="type"
-            id="type"
+            name="grade"
+            id="grade"
             onChange={handleChange}
             className="form-control"
-            value={type}
+            value={grade}
           >
-            {types}
+            {grades}
           </select>
         </div>
         {/* end of select type */}
         {/* guests  */}
         <div className="form-group">
-          <label htmlFor="capacity">Guests</label>
+          <label htmlFor="category">Guests</label>
           <select
-            name="capacity"
-            id="capacity"
+            name="category"
+            id="category"
             onChange={handleChange}
             className="form-control"
-            value={capacity}
+            value={category}
           >
             {people}
           </select>
         </div>
         {/* end of guests */}
-        {/* room price */}
+        {/* topic topic */}
         <div className="form-group">
-          <label htmlFor="price">room price ${price}</label>
+          <label htmlFor="topic">topic topic ${topic}</label>
           <input
             type="range"
-            name="price"
-            min={minPrice}
-            max={maxPrice}
-            id="price"
-            value={price}
+            name="topic"
+            min={minTopic}
+            max={maxTopic}
+            id="topic"
+            value={topic}
             onChange={handleChange}
             className="form-control"
           />
         </div>
-        {/* end of room price*/}
-        {/* size */}
+        {/* end of topic topic*/}
+        {/* subtopic */}
         <div className="form-group">
-          <label htmlFor="price">room size </label>
-          <div className="size-inputs">
+          <label htmlFor="topic">topic subtopic </label>
+          <div className="subtopic-inputs">
             <input
               type="number"
               name="minSize"
               value={minSize}
               onChange={handleChange}
-              className="size-input"
+              className="subtopic-input"
             />
             <input
               type="number"
               name="maxSize"
               value={maxSize}
               onChange={handleChange}
-              className="size-input"
+              className="subtopic-input"
             />
           </div>
         </div>
@@ -113,21 +113,21 @@ const RoomsFilter = ({ rooms }) => {
           <div className="single-extra">
             <input
               type="checkbox"
-              name="breakfast"
-              id="breakfast"
-              checked={breakfast}
+              name="reviewCount"
+              id="reviewCount"
+              checked={reviewCount}
               onChange={handleChange}
             />
-            <label htmlFor="breakfast">breakfast</label>
+            <label htmlFor="reviewCount">reviewCount</label>
           </div>
           <div className="single-extra">
             <input
               type="checkbox"
-              name="pets"
-              checked={pets}
+              name="rating"
+              checked={rating}
               onChange={handleChange}
             />
-            <label htmlFor="breakfast">pets</label>
+            <label htmlFor="reviewCount">rating</label>
           </div>
         </div>
         {/* end of extras type */}
@@ -136,4 +136,4 @@ const RoomsFilter = ({ rooms }) => {
   );
 };
 
-export default RoomsFilter;
+export default TopicsFilter;

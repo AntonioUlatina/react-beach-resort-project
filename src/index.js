@@ -3,15 +3,18 @@ import ReactDOM from "react-dom";
 // import './index.css';
 import App from "./App";
 import * as serviceWorker from "./serviceWorker";
-import { RoomProvider } from "./context";
+import { GameProvider } from "./context";
+import { TopicProvider } from "./altcontext";
 import { BrowserRouter } from "react-router-dom";
 
 ReactDOM.render(
-  <RoomProvider>
-    <BrowserRouter>
-      <App />
-    </BrowserRouter>
-  </RoomProvider>,
+  <TopicProvider>
+    <GameProvider>
+      <BrowserRouter>
+        <App />
+      </BrowserRouter>
+    </GameProvider>
+  </TopicProvider>,
   document.getElementById("root")
 );
 

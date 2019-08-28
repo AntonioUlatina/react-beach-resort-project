@@ -17,7 +17,6 @@
 }
 /* globals */
 body {
-  padding-top: 66px;
   color: var(--mainBlack);
   background: var(--mainWhite);
   font-family: Verdana, Geneva, Tahoma, sans-serif;
@@ -157,15 +156,15 @@ h6 {
 /* end of navbar */
 /* Hero */
 .defaultHero,
-.roomsHero {
+.gamesHero {
   min-height: calc(100vh - 66px);
   background: url("./images/defaultBcg.jpeg") center/cover no-repeat;
   display: flex;
   align-items: center;
   justify-content: center;
 }
-.roomsHero {
-  background-image: url("./images/room-2.jpeg");
+.gamesHero {
+  background-image: url("./images/game-2.jpeg");
   min-height: 60vh;
 }
 /* End of Hero */
@@ -270,12 +269,12 @@ h6 {
   }
 }
 /*end of services */
-/* featured rooms */
+/* featured games */
 
-.featured-rooms {
+.featured-games {
   padding: 5rem 0;
 }
-.featured-rooms-center {
+.featured-games-center {
   width: 80vw;
   margin: 0 auto;
   display: grid;
@@ -284,24 +283,24 @@ h6 {
   grid-column-gap: 40px;
 }
 @media screen and (min-width: 776px) {
-  .featured-rooms-center {
+  .featured-games-center {
     width: 90vw;
     grid-template-columns: repeat(auto-fit, minmax(330px, 1fr));
   }
 }
 @media screen and (min-width: 992px) {
-  .featured-rooms-center {
+  .featured-games-center {
     width: 95vw;
     max-width: 1170px;
   }
 }
-/* end pf featured rooms */
-/* room */
-.room {
+/* end pf featured games */
+/* game */
+.game {
   box-shadow: var(--lightShadow);
   transition: var(--mainTransition);
 }
-.room:hover {
+.game:hover {
   box-shadow: var(--darkShadow);
 }
 
@@ -313,7 +312,7 @@ h6 {
   display: block;
   transition: var(--mainTransition);
 }
-.price-top {
+.topic-top {
   position: absolute;
   top: 0;
   left: 0;
@@ -325,13 +324,13 @@ h6 {
   text-align: center;
   transition: var(--mainTransition);
 }
-.price-top h6 {
+.topic-top h6 {
   margin-bottom: 0;
   font-size: 0.9rem;
   font-weight: 300;
   letter-spacing: var(--mainSpacing);
 }
-.room-link {
+.game-link {
   position: absolute;
   top: 50%;
   left: 50%;
@@ -344,13 +343,13 @@ h6 {
 .img-container:hover img {
   opacity: 0.3;
 }
-.img-container:hover .price-top {
+.img-container:hover .topic-top {
   opacity: 0;
 }
-.img-container:hover .room-link {
+.img-container:hover .game-link {
   transform: translate(-50%, -50%) scale(1);
 }
-.room-info {
+.game-info {
   background: var(--darkGrey);
   text-transform: capitalize;
   padding: 0.5rem 0;
@@ -358,13 +357,13 @@ h6 {
   font-weight: 700;
   letter-spacing: var(--mainSpacing);
 }
-/* end of room  */
-/* single room*/
+/* end of game  */
+/* single game*/
 
-.single-room {
+.single-game {
   padding: 5rem 0 0 0;
 }
-.single-room-images {
+.single-game-images {
   width: 80vw;
   margin: 0 auto;
   display: grid;
@@ -372,11 +371,11 @@ h6 {
   grid-row-gap: 2rem;
   grid-column-gap: 50px;
 }
-.single-room-images img {
+.single-game-images img {
   width: 100%;
   display: block;
 }
-.single-room-info {
+.single-game-info {
   width: 80vw;
   display: grid;
   grid-template-columns: 1fr;
@@ -402,11 +401,11 @@ h6 {
 .info h6 {
   font-weight: 300;
 }
-.room-extras {
+.game-extras {
   width: 80vw;
   margin: 0 auto 3rem auto;
 }
-.room-extras h6 {
+.game-extras h6 {
   text-transform: capitalize;
   letter-spacing: var(--mainSpacing);
 }
@@ -418,13 +417,13 @@ h6 {
   grid-row-gap: 1rem;
 }
 @media screen and (min-width: 992px) {
-  .single-room-images,
-  .single-room-info,
-  .room-extras {
+  .single-game-images,
+  .single-game-info,
+  .game-extras {
     width: 95vw;
     max-width: 1170px;
   }
-  .single-room-info {
+  .single-game-info {
     display: grid;
     grid-template-columns: 1fr 1fr;
     grid-column-gap: 2rem;
@@ -433,12 +432,12 @@ h6 {
     padding-left: 3rem;
   }
 }
-/* end of single room*/
-/* roomlist */
-.roomslist {
+/* end of single game*/
+/* gamelist */
+.gameslist {
   padding: 5rem 0;
 }
-.roomslist-center {
+.gameslist-center {
   width: 80vw;
   margin: 0 auto;
   display: grid;
@@ -448,18 +447,18 @@ h6 {
 }
 
 @media screen and (min-width: 776px) {
-  .roomslist-center {
+  .gameslist-center {
     width: 90vw;
   }
 }
 @media screen and (min-width: 992px) {
-  .roomslist-center {
+  .gameslist-center {
     width: 95vw;
     max-width: 1170px;
   }
 }
-/* end of roomlist */
-/*  rooms fitler*/
+/* end of gamelist */
+/*  games fitler*/
 .filter-container {
   padding: 5rem 0;
 }
@@ -510,4 +509,4 @@ h6 {
     max-width: 1170px;
   }
 }
-/* end of rooms fitler*/
+/* end of games fitler*/
