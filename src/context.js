@@ -14,61 +14,15 @@ export default class GameProvider extends Component {
     topic: "Historia"
   };
 
-  // getData = async () => {
-  //   try {
-  //     let response = await Client.getEntries({
-  //       content_grade: "beachResortGame"
-  //     });
-  //     let games = this.formatData(response.items);
-
-  //     let featuredGames = games.filter(game => game.featured === true);
-  //     //
-  //     let maxTopic = Math.max(...games.map(item => item.topic));
-  //     let maxSize = Math.max(...games.map(item => item.subtopic));
-  //     this.setState({
-  //       games,
-  //       featuredGames,
-  //       sortedGames: games,
-  //       loading: false,
-  //       //
-  //       topic: maxTopic,
-  //       maxTopic,
-  //       maxSize
-  //     });
-  //   } catch (error) {
-  //     console.log(error);
-  //   }
-  // };
-
-  // componentDidUpdate() {
-  //   let games = this.formatData(items);
-  //   let featuredGames = games.filter(game => game.featured === true);
-  //   //
-  //   // let topic = Math.max(...games.map(item => item.topic));
-  //   // let maxSize = Math.max(...games.map(item => item.subtopic));
-  //   this.setState({
-  //     games,
-  //     featuredGames,
-  //     sortedGames: games,
-  //     loading: false
-  //   });
-  // }
   componentWillMount() {
-    // this.getData();
     let games = this.formatData(items);
     let featuredGames = games.filter(game => game.featured === true);
-    //
-    // let topic = Math.max(...games.map(item => item.topic));
-    // let maxSize = Math.max(...games.map(item => item.subtopic));
+
     this.setState({
       games,
       featuredGames,
       sortedGames: games,
       loading: false
-      //
-      // topic: maxTopic,
-      // maxTopic,
-      // maxSize
     });
   }
 
@@ -104,10 +58,7 @@ export default class GameProvider extends Component {
     let { games, grade, topic } = this.state;
 
     let tempGames = [...games];
-    // transform values
-    // get category
-    // topic = parseInt(topic);
-    // filter by grade
+
     if (grade !== "all") {
       tempGames = tempGames.filter(game => game.grade === grade);
     }
@@ -115,20 +66,7 @@ export default class GameProvider extends Component {
     if (topic !== "all") {
       tempGames = tempGames.filter(game => game.topic === topic);
     }
-    // // filter by topic
-    // tempGames = tempGames.filter(game => game.topic <= topic);
-    // //filter by subtopic
-    // tempGames = tempGames.filter(
-    //   game => game.subtopic >= minSize && game.subtopic <= maxSize
-    // );
-    //filter by reviewCount
-    // if (reviewCount) {
-    //   tempGames = tempGames.filter(game => game.reviewCount === true);
-    // }
-    // //filter by rating
-    // if (rating) {
-    //   tempGames = tempGames.filter(game => game.rating === true);
-    // }
+
     this.setState({
       sortedGames: tempGames
     });

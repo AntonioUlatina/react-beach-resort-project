@@ -4,26 +4,14 @@ import Container from "react-bootstrap/Container";
 import Accord from "react-bootstrap/Accordion";
 import Card from "react-bootstrap/Card";
 import Image from "react-bootstrap/Image";
-import PropTypes from "prop-types";
-import { useContext } from "react";
-import { TopicContext } from "../altcontext";
 
+class Accordion extends React.Component {
 
-// const Accordion = memo(({ topic }) => {
-//     const { slug } = topic;
-
-function Accordion() {
-
-    // react hooks
-//     const context = useContext(TopicContext);
-//   const { slug } = context;
-
+    render() {
         return (
 
                 <Container style={{ margin: 0, background: "lightblue" }}>
-                {/* <div style={{ background: "lightblue"}}> */}
-                        {/* <Row>
-                            <Col sm={3} style={{ background: "lightblue"}}> */}
+
                                 <Image
                                     src={require("../images/logomep.png")}
                                     fluid
@@ -315,18 +303,9 @@ function Accordion() {
                                         </Accord.Collapse>
                                     </Card>
                                 </Accord>
-                            {/* </Col>
-                        </Row> */}
-                    {/* </div> */}
                 </Container>
         );
 }
-// }
-
-Accordion.propTypes = {
-        game: PropTypes.shape({
-            slug: PropTypes.string.isRequired
-        })
-    };
+}
 
 export default Accordion;

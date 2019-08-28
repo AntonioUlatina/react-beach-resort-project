@@ -5,8 +5,7 @@ import PropTypes from "prop-types";
 import { memo } from "react";
 
 const Game = memo(({ game }) => {
-  const { name, slug, images, topic } = game;
-  // console.log(name);
+  const { name, slug, images } = game;
   return (
     <article className="game">
       <div className="img-container">

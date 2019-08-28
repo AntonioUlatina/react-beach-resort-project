@@ -34,13 +34,6 @@ export default class SingleTopic extends Component {
 
     return (
       <>
-        {/* <StyledHero img={images[0] || this.state.tempTopicPlaceholder}>
-          <Banner title={`${name} tempTopic`}>
-            <Link to="/tempTopics" className="btn-primary">
-              back to tempTopics
-            </Link>
-          </Banner>
-        </StyledHero> */}
         <section className="single-tempTopic">
           <div className="single-tempTopic-info">
             <article className="info">
